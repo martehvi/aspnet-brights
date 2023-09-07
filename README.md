@@ -1,6 +1,6 @@
 # Ratings System
 
-This repo is a fork of [Realworld app](https://github.com/adr1enbe4udou1n/aspnetcore-realworld-example-app) intended for a brights course on dotnet.
+This repo is a fork of [Realworld app](https://github.com/adr1enbe4udou1n/aspnetcore-realworld-example-app) intended for a brights course on dotnet.<br/>
 
 ## Table of Contents
 
@@ -18,6 +18,8 @@ This repo is a fork of [Realworld app](https://github.com/adr1enbe4udou1n/aspnet
   - [Delete Rating](#delete-ratings)
   - [Data Transfer Objects](#data-transfer-objects)
 - [Further Work](#further-work)
+
+<br/><br/>
 
 ## Project Setup
 
@@ -45,10 +47,12 @@ Now you should be able to access swagger and inspect the existing API at http://
 Start by reviewing the existing methods and endpoint in Swagger, and then try to find their implementations in the code. Become familiar with the project architecture and try to determine the patterns used. Once comfortable with the solution, move on to the data model.
 
 <br/>
+<br/>
 
 ## Data Model
 
 The first part of the project is to modify the existing data model to allow for storing ratings. A user should be able to review each article and give a rating between 1 and 5 to each one. They cannot have more than one review per article. There are several ways you could implement this, start by thinking of how you would structure the relational database.
+<br/>
 
 ### Rating Model
 
@@ -63,7 +67,8 @@ With the class and its properties defined, its relations to other entites must a
 To apply the changes in the data model to the PostgreSQL database, you will have to create a migration. You can use the `dotnet ef` tool for this. To verify that the migration worked as intended, you can use a tool like pgadmin or the postgres CLI to inspect the database.
 
 <br/>
-    
+<br/>
+
 ## Controller
 Now that we have updated our data model, it´s time to move on to the controller responsible for handling rating requests. Start by creating a new controller in the correct folder.
 
@@ -98,6 +103,8 @@ Opinions can change over time, and perhaps an article you rated a 5 one year ago
 ### Data Transfer Objects
 
 To improve the security of our application, and not expose all the fields of the ratings, we should use Data Transfer Objects (DTOs). Define data transfer objects and modify the existing code to support these.
+
+<br/><br/>
 
 ## Further Work
 
