@@ -10,6 +10,7 @@ public interface IAppDbContext : IDisposable
     DbSet<Article> Articles { get; }
     DbSet<Comment> Comments { get; }
     DbSet<Tag> Tags { get; }
+    DbSet<Order> Orders { get; }
 
     void UseRoConnection();
 

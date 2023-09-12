@@ -18,6 +18,9 @@ public class AppDbContext : DbContext, IAppDbContext
     public DbSet<Comment> Comments => Set<Comment>();
     public DbSet<Tag> Tags => Set<Tag>();
 
+    public DbSet<Order> Orders => Set<Order>();
+
+
     public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration) : base(options)
     {
         _roConnectionString = configuration.GetConnectionString("DefaultRoConnection");

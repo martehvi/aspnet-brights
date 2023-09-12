@@ -9,6 +9,7 @@ public class Article : IAuditableEntity
     private readonly List<Comment> _comments = new();
     private readonly List<ArticleTag> _tags = new();
     private readonly List<ArticleFavorite> _favoredUsers = new();
+    private readonly List<Order> _orders = new();
 
     public int Id { get; private set; }
 
@@ -32,11 +33,17 @@ public class Article : IAuditableEntity
 
     public DateTime UpdatedAt { get; set; }
 
+    public decimal PhysicalPrice { get; set; }
+    public decimal DigitalPrice { get; set; }
+
+
     public virtual IReadOnlyCollection<Comment> Comments => _comments;
 
     public virtual IReadOnlyCollection<ArticleTag> Tags => _tags;
 
     public virtual IReadOnlyCollection<ArticleFavorite> FavoredUsers => _favoredUsers;
+    public virtual IReadOnlyCollection<Order> Orders => _orders;
+
 
     public bool IsFavoritedBy(User user)
     {

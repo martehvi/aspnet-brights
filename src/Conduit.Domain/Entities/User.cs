@@ -11,6 +11,7 @@ public class User : IAuditableEntity
     private readonly List<Comment> _comments = new();
     private readonly List<FollowerUser> _following = new();
     private readonly List<FollowerUser> _followers = new();
+    private readonly List<Order> _orders = new();
 
     public int Id { get; private set; }
 
@@ -35,12 +36,14 @@ public class User : IAuditableEntity
     public virtual IReadOnlyCollection<Article> Articles => _articles;
 
     public virtual IReadOnlyCollection<ArticleFavorite> FavoriteArticles => _favoriteArticles;
-
+    
     public virtual IReadOnlyCollection<Comment> Comments => _comments;
 
     public virtual IReadOnlyCollection<FollowerUser> Following => _following;
 
     public virtual IReadOnlyCollection<FollowerUser> Followers => _followers;
+    public virtual IReadOnlyCollection<Order> Orders => _orders;
+
 
     public bool IsFollowing(User user)
     {
