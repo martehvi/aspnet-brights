@@ -1,4 +1,7 @@
-﻿using Conduit.Domain.Entities;
+﻿using Conduit.Application.Features.Orders.Queries;
+using Conduit.Domain.Entities;
+
+using MediatR;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,21 +13,25 @@ namespace Conduit.Presentation.Controllers;
 [Authorize]
 public class OrdersController
 {
-    public OrdersController()
+    private readonly ISender _sender;
+    public OrdersController(ISender sender)
     {
-
+        _sender = sender;
     }
 
     /// <summary>
     /// Get recent orders globally
     /// </summary>
     /// <remarks>Get all orders globally. </remarks>
+    /// <param name="query"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpGet(Name = "GetOrders")]
     [AllowAnonymous]
-    public void List()
+    public Task<MultipleOrdersResponse> List([FromQuery] OrdersListQuery query, CancellationToken cancellationToken)
     {
         // insert GET logic here
         // should return something similar as the GET endpoint in the other *Controller.cs files - like Task<MutlipleOrderResponse>
+        return _sender.Send(query, cancellationToken);
     }
 }
